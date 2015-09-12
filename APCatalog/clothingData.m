@@ -28,7 +28,7 @@
     NSMutableArray *imagesURLsArray = [NSMutableArray new];
     NSArray *imagesFromDictionary = [dictionary objectForKey:@"images"];
     for (NSDictionary *d in imagesFromDictionary) {
-        [imagesURLsArray addObject:[NSURL URLWithString:[d objectForKey:@"path"]]];
+        [imagesURLsArray addObject:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[d objectForKey:@"path"]]]]];
     }
     clothing.imagesURLs = imagesURLsArray;
     return clothing;

@@ -50,6 +50,8 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
                           pageNumber:(NSNumber *) pageNumber
                        sortingOption:(NSString *) sort
                         andDirection:(NSString *) direction {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please wait" message:@"Downloading the catalog information" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+    [alertView show];
     NSString *desiredURLString = [NSString stringWithFormat:@"%@?maxItems=%@&page=%@&sort=%@&dir=%@", BaseURLString, maxItems, pageNumber, sort, direction];
     NSURL *url = [NSURL URLWithString:desiredURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -64,6 +66,8 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
         for (NSDictionary *d in results) {
             [parsedResults addObject:[clothingData clothingFromDictionary:d]];
         }
+        [alertView dismissWithClickedButtonIndex:0 animated:YES];
+        NSLog(@"SUCCESS");
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -87,9 +91,9 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
     clothingCell.cloth = [parsedResults objectAtIndex:indexPath.row];
     clothingCell.brand.text = clothingCell.cloth.brand;
     clothingCell.model.text = clothingCell.cloth.name;
-    [clothingCell.mainImageView setImageWithURL:[clothingCell.cloth.imagesURLs objectAtIndex:0]];
+    [clothingCell.mainImageView setImage:[clothingCell.cloth.imagesURLs objectAtIndex:0]];
     [clothingCell.thumbnailsImages enumerateObjectsUsingBlock:^(UIImageView *thumbnail, NSUInteger idx, BOOL *stop) {
-        [thumbnail setImageWithURL:[clothingCell.cloth.imagesURLs objectAtIndex:idx]];
+        [thumbnail setImage:[clothingCell.cloth.imagesURLs objectAtIndex:idx]];
     }];
     clothingCell.price.text = [NSString stringWithFormat:@"RM %@", clothingCell.cloth.price];
     return clothingCell;

@@ -19,12 +19,11 @@
 
     // Configure the view for the selected state
 }
-
--(IBAction)thumbnailTapped:(UIButton *)sender {
+- (IBAction)thumbnailPictureTapped:(id)sender {
     NSLog(@"IMAGE CHANGED");
-    NSURL *imageURL = [self.cloth.imagesURLs objectAtIndex:[sender.titleLabel.text intValue]];
-    [self.mainImageView setImageWithURL:imageURL
-                       placeholderImage:nil];
+    int index = [[sender currentTitle] intValue];
+    UIImageView *imageFromThumbnail = [self.thumbnailsImages objectAtIndex:index];
+    [self.mainImageView setImage:imageFromThumbnail.image];
     
 }
 
