@@ -12,8 +12,9 @@
 
 +(simplesObject *)simpleFromDictionary:(NSDictionary *)dictionary {
     simplesObject *simple = [simplesObject new];
-    
-    
+    simple.productIdentifier = [[dictionary allKeys] objectAtIndex:0];
+    simple.meta = [simplesData simpleDataFromDictionary:[dictionary objectForKey:@"meta"]];
+    simple.attributes = [attributesData attributesDataFromDictionary:[dictionary objectForKey:@"attributes"]];
     return simple;
 }
 

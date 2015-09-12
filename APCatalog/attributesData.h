@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSString *size;
 
++(attributesData *) attributesDataFromDictionary:(NSDictionary *) dictionary;
+
 @end

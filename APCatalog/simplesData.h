@@ -33,5 +33,6 @@
 @property (assign, nonatomic) NSNumber *estimate_delivery_position;
 @property (assign, nonatomic) NSNumber *sleeve_opening;
 
++(simplesData *) simpleDataFromDictionary:(NSDictionary *) dictionary;
 
 @end

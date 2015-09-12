@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSNumber *maxItems;
+@property (strong, nonatomic) NSNumber *pageNumber;
+@property (strong, nonatomic) NSString *sortingDescription;
+@property (strong, nonatomic) NSString *sortingDirection;
 
 @end
 

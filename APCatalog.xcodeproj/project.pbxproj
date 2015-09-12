@@ -14,10 +14,11 @@
 		515DB7431BA39CB50049404B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515DB7421BA39CB50049404B /* Images.xcassets */; };
 		515DB7461BA39CB50049404B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515DB7441BA39CB50049404B /* LaunchScreen.xib */; };
 		515DB7521BA39CB50049404B /* APCatalogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DB7511BA39CB50049404B /* APCatalogTests.m */; };
-		51AD38461BA3AB5B00C6BD28 /* brandObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AD38451BA3AB5B00C6BD28 /* brandObject.m */; };
 		51AD384C1BA3AC1500C6BD28 /* simplesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AD384B1BA3AC1500C6BD28 /* simplesObject.m */; };
 		51AD384F1BA3AE8900C6BD28 /* simplesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AD384E1BA3AE8900C6BD28 /* simplesData.m */; };
 		51AD38521BA3B1A700C6BD28 /* attributesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AD38511BA3B1A700C6BD28 /* attributesData.m */; };
+		51AD38571BA479EF00C6BD28 /* ClothingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AD38561BA479EF00C6BD28 /* ClothingTableViewCell.m */; };
+		51AD385A1BA47E5200C6BD28 /* clothingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AD38591BA47E5200C6BD28 /* clothingData.m */; };
 		C310D2713E5307ADCCB05D94 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 511D0F73963E8BC234DC944D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -46,14 +47,16 @@
 		515DB74B1BA39CB50049404B /* APCatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APCatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		515DB7501BA39CB50049404B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515DB7511BA39CB50049404B /* APCatalogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APCatalogTests.m; sourceTree = "<group>"; };
-		51AD38441BA3AB5B00C6BD28 /* brandObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brandObject.h; sourceTree = "<group>"; };
-		51AD38451BA3AB5B00C6BD28 /* brandObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = brandObject.m; sourceTree = "<group>"; };
 		51AD384A1BA3AC1500C6BD28 /* simplesObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simplesObject.h; sourceTree = "<group>"; };
 		51AD384B1BA3AC1500C6BD28 /* simplesObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = simplesObject.m; sourceTree = "<group>"; };
 		51AD384D1BA3AE8900C6BD28 /* simplesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simplesData.h; sourceTree = "<group>"; };
 		51AD384E1BA3AE8900C6BD28 /* simplesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = simplesData.m; sourceTree = "<group>"; };
 		51AD38501BA3B1A700C6BD28 /* attributesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attributesData.h; sourceTree = "<group>"; };
 		51AD38511BA3B1A700C6BD28 /* attributesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = attributesData.m; sourceTree = "<group>"; };
+		51AD38551BA479EF00C6BD28 /* ClothingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothingTableViewCell.h; sourceTree = "<group>"; };
+		51AD38561BA479EF00C6BD28 /* ClothingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothingTableViewCell.m; sourceTree = "<group>"; };
+		51AD38581BA47E5200C6BD28 /* clothingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clothingData.h; sourceTree = "<group>"; };
+		51AD38591BA47E5200C6BD28 /* clothingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clothingData.m; sourceTree = "<group>"; };
 		8A4B6106E14DCADDD5815C49 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CDB800C730490421653B3324 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,18 +111,13 @@
 		515DB7341BA39CB50049404B /* APCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				51AD38531BA46C1700C6BD28 /* Models */,
 				515DB7391BA39CB50049404B /* AppDelegate.h */,
 				515DB73A1BA39CB50049404B /* AppDelegate.m */,
+				51AD38551BA479EF00C6BD28 /* ClothingTableViewCell.h */,
+				51AD38561BA479EF00C6BD28 /* ClothingTableViewCell.m */,
 				515DB73C1BA39CB50049404B /* ViewController.h */,
 				515DB73D1BA39CB50049404B /* ViewController.m */,
-				51AD38441BA3AB5B00C6BD28 /* brandObject.h */,
-				51AD38451BA3AB5B00C6BD28 /* brandObject.m */,
-				51AD384A1BA3AC1500C6BD28 /* simplesObject.h */,
-				51AD384B1BA3AC1500C6BD28 /* simplesObject.m */,
-				51AD384D1BA3AE8900C6BD28 /* simplesData.h */,
-				51AD384E1BA3AE8900C6BD28 /* simplesData.m */,
-				51AD38501BA3B1A700C6BD28 /* attributesData.h */,
-				51AD38511BA3B1A700C6BD28 /* attributesData.m */,
 				515DB73F1BA39CB50049404B /* Main.storyboard */,
 				515DB7421BA39CB50049404B /* Images.xcassets */,
 				515DB7441BA39CB50049404B /* LaunchScreen.xib */,
@@ -152,6 +150,29 @@
 				515DB7501BA39CB50049404B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		51AD38531BA46C1700C6BD28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				51AD38541BA46C1D00C6BD28 /* Results */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		51AD38541BA46C1D00C6BD28 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				51AD38581BA47E5200C6BD28 /* clothingData.h */,
+				51AD38591BA47E5200C6BD28 /* clothingData.m */,
+				51AD384A1BA3AC1500C6BD28 /* simplesObject.h */,
+				51AD384B1BA3AC1500C6BD28 /* simplesObject.m */,
+				51AD384D1BA3AE8900C6BD28 /* simplesData.h */,
+				51AD384E1BA3AE8900C6BD28 /* simplesData.m */,
+				51AD38501BA3B1A700C6BD28 /* attributesData.h */,
+				51AD38511BA3B1A700C6BD28 /* attributesData.m */,
+			);
+			name = Results;
 			sourceTree = "<group>";
 		};
 		A16C95A2E64C520C2C8F8E0D /* Pods */ = {
@@ -302,7 +323,8 @@
 				51AD384F1BA3AE8900C6BD28 /* simplesData.m in Sources */,
 				515DB73B1BA39CB50049404B /* AppDelegate.m in Sources */,
 				51AD38521BA3B1A700C6BD28 /* attributesData.m in Sources */,
-				51AD38461BA3AB5B00C6BD28 /* brandObject.m in Sources */,
+				51AD385A1BA47E5200C6BD28 /* clothingData.m in Sources */,
+				51AD38571BA479EF00C6BD28 /* ClothingTableViewCell.m in Sources */,
 				51AD384C1BA3AC1500C6BD28 /* simplesObject.m in Sources */,
 				515DB7381BA39CB50049404B /* main.m in Sources */,
 			);

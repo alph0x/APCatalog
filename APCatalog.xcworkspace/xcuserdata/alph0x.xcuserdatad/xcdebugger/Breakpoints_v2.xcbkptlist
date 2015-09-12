@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "APCatalog/ViewController.m"
-            timestampString = "463710746.978657"
+            filePath = "APCatalog/ClothingTableViewCell.m"
+            timestampString = "463769521.476162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-performConnection"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "APCatalog/ViewController.m"
-            timestampString = "463710722.815117"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "-performConnection"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-thumbnailTapped:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

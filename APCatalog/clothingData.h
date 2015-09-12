@@ -1,15 +1,15 @@
 //
-//  brandObject.h
+//  clothingData.h
 //  
 //
-//  Created by Alfredo E. Pérez L. on 9/11/15.
+//  Created by Alfredo E. Pérez L. on 9/12/15.
 //
 //
 
 #import <Foundation/Foundation.h>
 #import "simplesObject.h"
 
-@interface brandObject : NSObject
+@interface clothingData : NSObject
 
 @property (strong, nonatomic) NSString *brand;
 @property (assign, nonatomic) NSNumber *max_price;
@@ -19,6 +19,6 @@
 @property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSArray  *imagesURLs;
 
-+(brandObject *) brandFromDictionary:(NSDictionary *) dictionary;
++(clothingData *) clothingFromDictionary:(NSDictionary *) dictionary;
 
 @end
