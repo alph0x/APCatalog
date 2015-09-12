@@ -7,8 +7,19 @@
 //
 
 #import "ViewController.h"
+#import "AFNetworking.h"
+#import <CacheKit/CacheKit.h>
 
-@interface ViewController ()
+
+static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/women/clothing";
+
+@interface ViewController () {
+    NSDictionary *responseJSON;
+    NSDictionary *metadata;
+    NSDictionary *categories;
+    NSArray *results;
+    CKFileCache *cache;
+}
 
 @end
 
@@ -16,12 +27,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self performConnection];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)performConnection{
+    NSURL *url = [NSURL URLWithString:BaseURLString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        responseJSON = responseObject;
+        metadata = [responseJSON objectForKey:@"metadata"];
+        categories = [metadata objectForKey:@"categories"];
+        results = [metadata objectForKey:@"results"];
+        for (NSDictionary *d in results) {
+            NSLog(@"HERE");
+        }
+        NSLog(@"Data gathered.");
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Information"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+    
+    [operation start];
+    
+    
 }
 
 @end

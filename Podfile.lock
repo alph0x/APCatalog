@@ -1,4 +1,25 @@
 PODS:
+  - AFNetworking (2.6.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.6.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.0)
+  - AFNetworking/Security (2.6.0)
+  - AFNetworking/Serialization (2.6.0)
+  - AFNetworking/UIKit (2.6.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - CacheKit (0.4.0):
     - CacheKit/Core
     - CacheKit/FastImages
@@ -15,9 +36,11 @@ PODS:
     - FMDB/common
 
 DEPENDENCIES:
+  - AFNetworking (~> 2.0)
   - CacheKit
 
 SPEC CHECKSUMS:
+  AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   CacheKit: dd744ba4133cca38e5e536fc8e98bf0d289bd42a
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
 

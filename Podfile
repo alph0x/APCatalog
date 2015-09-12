@@ -4,3 +4,4 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 pod "CacheKit"
+pod "AFNetworking", "~> 2.0"
