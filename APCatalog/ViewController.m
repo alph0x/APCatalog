@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "AFNetworking.h"
-#import <CacheKit/CacheKit.h>
+#import <DFCache/DFCache.h>
 #import "clothingData.h"
 #import "ClothingTableViewCell.h"
 
@@ -19,8 +19,7 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
 @interface ViewController () {
     NSDictionary *responseJSON;
     NSArray *results;
-    CKFileCache *cache;
-    
+    DFCache *cache;
     NSMutableArray *parsedResults;
     
     
@@ -40,17 +39,28 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
     parsedResults = [NSMutableArray new];
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
-    [self performConnectionWithMaxItems:_maxItems
-                             pageNumber:_pageNumber
-                          sortingOption:_sortingDescription
-                           andDirection:_sortingDirection];
+    cache = [[DFCache alloc] initWithName:@"clothes"];
+    results = [cache cachedObjectForKey:@"results"];
+    if (results) {
+        for (NSDictionary *d in results) {
+            [parsedResults addObject:[clothingData clothingFromDictionary:d]];
+        }
+        [self.tableView reloadData];
+    }else {
+        [self performConnectionWithMaxItems:_maxItems
+                                 pageNumber:_pageNumber
+                              sortingOption:_sortingDescription
+                               andDirection:_sortingDirection];
+    }
+    
+    
 }
 
 -(void)performConnectionWithMaxItems:(NSNumber *) maxItems
                           pageNumber:(NSNumber *) pageNumber
                        sortingOption:(NSString *) sort
                         andDirection:(NSString *) direction {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please wait" message:@"Downloading the catalog information" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please wait" message:@"Downloading the catalog information, this may take few minutes..." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
     [alertView show];
     NSString *desiredURLString = [NSString stringWithFormat:@"%@?maxItems=%@&page=%@&sort=%@&dir=%@", BaseURLString, maxItems, pageNumber, sort, direction];
     NSURL *url = [NSURL URLWithString:desiredURLString];
@@ -63,12 +73,14 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
         
         responseJSON = responseObject;
         results = [[responseJSON objectForKey:@"metadata"] objectForKey:@"results"];
+        [cache storeObject:results forKey:@"results"];
         for (NSDictionary *d in results) {
             [parsedResults addObject:[clothingData clothingFromDictionary:d]];
         }
         [alertView dismissWithClickedButtonIndex:0 animated:YES];
         NSLog(@"SUCCESS");
         [self.tableView reloadData];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Information"

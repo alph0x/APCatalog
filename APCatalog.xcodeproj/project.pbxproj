@@ -19,6 +19,7 @@
 		51AD38521BA3B1A700C6BD28 /* attributesData.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AD38511BA3B1A700C6BD28 /* attributesData.m */; };
 		51AD38571BA479EF00C6BD28 /* ClothingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AD38561BA479EF00C6BD28 /* ClothingTableViewCell.m */; };
 		51AD385A1BA47E5200C6BD28 /* clothingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AD38591BA47E5200C6BD28 /* clothingData.m */; };
+		51E31EB31BA4D44400046ADC /* FAWebServiceCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E31EB21BA4D44400046ADC /* FAWebServiceCache.m */; };
 		C310D2713E5307ADCCB05D94 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 511D0F73963E8BC234DC944D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,8 @@
 		51AD38561BA479EF00C6BD28 /* ClothingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothingTableViewCell.m; sourceTree = "<group>"; };
 		51AD38581BA47E5200C6BD28 /* clothingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clothingData.h; sourceTree = "<group>"; };
 		51AD38591BA47E5200C6BD28 /* clothingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clothingData.m; sourceTree = "<group>"; };
+		51E31EB11BA4D44400046ADC /* FAWebServiceCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAWebServiceCache.h; sourceTree = "<group>"; };
+		51E31EB21BA4D44400046ADC /* FAWebServiceCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAWebServiceCache.m; sourceTree = "<group>"; };
 		8A4B6106E14DCADDD5815C49 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CDB800C730490421653B3324 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +121,8 @@
 				51AD38561BA479EF00C6BD28 /* ClothingTableViewCell.m */,
 				515DB73C1BA39CB50049404B /* ViewController.h */,
 				515DB73D1BA39CB50049404B /* ViewController.m */,
+				51E31EB11BA4D44400046ADC /* FAWebServiceCache.h */,
+				51E31EB21BA4D44400046ADC /* FAWebServiceCache.m */,
 				515DB73F1BA39CB50049404B /* Main.storyboard */,
 				515DB7421BA39CB50049404B /* Images.xcassets */,
 				515DB7441BA39CB50049404B /* LaunchScreen.xib */,
@@ -323,6 +328,7 @@
 				51AD384F1BA3AE8900C6BD28 /* simplesData.m in Sources */,
 				515DB73B1BA39CB50049404B /* AppDelegate.m in Sources */,
 				51AD38521BA3B1A700C6BD28 /* attributesData.m in Sources */,
+				51E31EB31BA4D44400046ADC /* FAWebServiceCache.m in Sources */,
 				51AD385A1BA47E5200C6BD28 /* clothingData.m in Sources */,
 				51AD38571BA479EF00C6BD28 /* ClothingTableViewCell.m in Sources */,
 				51AD384C1BA3AC1500C6BD28 /* simplesObject.m in Sources */,

@@ -3,5 +3,5 @@
 
 source 'https://github.com/CocoaPods/Specs.git'
 
-pod "CacheKit"
+pod 'DFCache'
 pod "AFNetworking", "~> 2.0"

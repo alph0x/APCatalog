@@ -20,28 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.6.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - CacheKit (0.4.0):
-    - CacheKit/Core
-    - CacheKit/FastImages
-    - FMDB (~> 2.4)
-  - CacheKit/Core (0.4.0):
-    - FMDB (~> 2.4)
-  - CacheKit/FastImages (0.4.0):
-    - CacheKit/Core
-    - FMDB (~> 2.4)
-  - FMDB (2.5):
-    - FMDB/standard
-  - FMDB/common (2.5)
-  - FMDB/standard (2.5):
-    - FMDB/common
+  - DFCache (3.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
-  - CacheKit
+  - DFCache
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
-  CacheKit: dd744ba4133cca38e5e536fc8e98bf0d289bd42a
-  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  DFCache: eb78f915c4f747759a2efb2656c58929939b4763
 
 COCOAPODS: 0.34.4

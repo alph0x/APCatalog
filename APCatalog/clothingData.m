@@ -7,6 +7,7 @@
 //
 
 #import "clothingData.h"
+#import <DFCache/DFCache.h>
 
 @implementation clothingData
 
@@ -27,8 +28,18 @@
     clothing.identifier = [dictionary objectForKey:@"id"];
     NSMutableArray *imagesURLsArray = [NSMutableArray new];
     NSArray *imagesFromDictionary = [dictionary objectForKey:@"images"];
+    DFCache *cache = [[DFCache alloc] initWithName:[NSString stringWithFormat:@"%@-%@", clothing.brand, clothing.name]];
     for (NSDictionary *d in imagesFromDictionary) {
-        [imagesURLsArray addObject:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[d objectForKey:@"path"]]]]];
+        NSString *path = [d objectForKey:@"path"];
+        UIImage *picture = [cache cachedObjectForKey:path];
+        if (!picture) {
+            picture = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
+            [cache storeObject:picture forKey:path];
+            
+        }
+        
+        [imagesURLsArray addObject:picture];
+        
     }
     clothing.imagesURLs = imagesURLsArray;
     return clothing;

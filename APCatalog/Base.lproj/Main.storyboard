@@ -63,6 +63,7 @@
                                                     <rect key="frame" x="108" y="34" width="30" height="44"/>
                                                     <animations/>
                                                     <state key="normal" title="0">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -88,6 +89,7 @@
                                                     <rect key="frame" x="142" y="34" width="30" height="44"/>
                                                     <animations/>
                                                     <state key="normal" title="1">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -113,6 +115,7 @@
                                                     <rect key="frame" x="108" y="82" width="30" height="44"/>
                                                     <animations/>
                                                     <state key="normal" title="2">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -138,6 +141,7 @@
                                                     <rect key="frame" x="142" y="82" width="30" height="44"/>
                                                     <animations/>
                                                     <state key="normal" title="3">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -163,6 +167,7 @@
                                                     <rect key="frame" x="120" y="130" width="18" height="44"/>
                                                     <animations/>
                                                     <state key="normal" title="4">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -188,6 +193,7 @@
                                                     <rect key="frame" x="142" y="130" width="30" height="44"/>
                                                     <animations/>
                                                     <state key="normal" title="5">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>

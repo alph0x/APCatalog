@@ -11,7 +11,7 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface ClothingTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UIImageView *mainImageView;
+@property (retain, nonatomic) IBOutlet UIImageView *mainImageView;
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *thumbnailsImages;
 @property (strong, nonatomic) IBOutlet UILabel *brand;
 @property (strong, nonatomic) IBOutlet UILabel *model;
