@@ -16,15 +16,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-- (IBAction)thumbnailPictureTapped:(id)sender {
-    NSLog(@"IMAGE CHANGED");
-    int index = [[sender currentTitle] intValue];
-    UIImageView *imageFromThumbnail = [self.thumbnailsImages objectAtIndex:index];
-    [self.mainImageView setImage:imageFromThumbnail.image];
-    
 }
 
 @end

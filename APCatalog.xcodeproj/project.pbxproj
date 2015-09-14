@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		513E116D1BA6445400411763 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513E116C1BA6445400411763 /* FPPopoverController.m */; };
+		513E11711BA649A600411763 /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513E116F1BA649A600411763 /* FiltersViewController.m */; };
+		513E11721BA649A600411763 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 513E11701BA649A600411763 /* FiltersViewController.xib */; };
+		513E11761BA6603800411763 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 513E11751BA6603800411763 /* FPPopoverView.m */; };
+		513E11791BA6604900411763 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 513E11781BA6604900411763 /* FPTouchView.m */; };
 		515DB7381BA39CB50049404B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DB7371BA39CB50049404B /* main.m */; };
 		515DB73B1BA39CB50049404B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DB73A1BA39CB50049404B /* AppDelegate.m */; };
 		515DB73E1BA39CB50049404B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515DB73D1BA39CB50049404B /* ViewController.m */; };
@@ -35,6 +40,16 @@
 
 /* Begin PBXFileReference section */
 		511D0F73963E8BC234DC944D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		513E116B1BA6445400411763 /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
+		513E116C1BA6445400411763 /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
+		513E116E1BA649A600411763 /* FiltersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersViewController.h; sourceTree = "<group>"; };
+		513E116F1BA649A600411763 /* FiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersViewController.m; sourceTree = "<group>"; };
+		513E11701BA649A600411763 /* FiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
+		513E11731BA6601E00411763 /* ARCMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		513E11741BA6603800411763 /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
+		513E11751BA6603800411763 /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
+		513E11771BA6604900411763 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
+		513E11781BA6604900411763 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
 		515DB7321BA39CB50049404B /* APCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515DB7361BA39CB50049404B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515DB7371BA39CB50049404B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -123,6 +138,16 @@
 				515DB73D1BA39CB50049404B /* ViewController.m */,
 				51E31EB11BA4D44400046ADC /* FAWebServiceCache.h */,
 				51E31EB21BA4D44400046ADC /* FAWebServiceCache.m */,
+				513E116B1BA6445400411763 /* FPPopoverController.h */,
+				513E116C1BA6445400411763 /* FPPopoverController.m */,
+				513E116E1BA649A600411763 /* FiltersViewController.h */,
+				513E116F1BA649A600411763 /* FiltersViewController.m */,
+				513E11741BA6603800411763 /* FPPopoverView.h */,
+				513E11751BA6603800411763 /* FPPopoverView.m */,
+				513E11771BA6604900411763 /* FPTouchView.h */,
+				513E11781BA6604900411763 /* FPTouchView.m */,
+				513E11731BA6601E00411763 /* ARCMacros.h */,
+				513E11701BA649A600411763 /* FiltersViewController.xib */,
 				515DB73F1BA39CB50049404B /* Main.storyboard */,
 				515DB7421BA39CB50049404B /* Images.xcassets */,
 				515DB7441BA39CB50049404B /* LaunchScreen.xib */,
@@ -273,6 +298,7 @@
 			files = (
 				515DB7411BA39CB50049404B /* Main.storyboard in Resources */,
 				515DB7461BA39CB50049404B /* LaunchScreen.xib in Resources */,
+				513E11721BA649A600411763 /* FiltersViewController.xib in Resources */,
 				515DB7431BA39CB50049404B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,8 +355,12 @@
 				515DB73B1BA39CB50049404B /* AppDelegate.m in Sources */,
 				51AD38521BA3B1A700C6BD28 /* attributesData.m in Sources */,
 				51E31EB31BA4D44400046ADC /* FAWebServiceCache.m in Sources */,
+				513E11711BA649A600411763 /* FiltersViewController.m in Sources */,
+				513E11761BA6603800411763 /* FPPopoverView.m in Sources */,
 				51AD385A1BA47E5200C6BD28 /* clothingData.m in Sources */,
 				51AD38571BA479EF00C6BD28 /* ClothingTableViewCell.m in Sources */,
+				513E116D1BA6445400411763 /* FPPopoverController.m in Sources */,
+				513E11791BA6604900411763 /* FPTouchView.m in Sources */,
 				51AD384C1BA3AC1500C6BD28 /* simplesObject.m in Sources */,
 				515DB7381BA39CB50049404B /* main.m in Sources */,
 			);

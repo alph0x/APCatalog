@@ -19,6 +19,9 @@
     clothing.max_price = [data objectForKey:@"max_price"];
     clothing.name = [data objectForKey:@"name"];
     clothing.price = [data objectForKey:@"price"];
+    if (!clothing.price) {
+        clothing.price = @0;
+    }
     NSMutableArray *simplesArray = [NSMutableArray new];
     NSArray *simplesFromDictionary = [data objectForKey:@"simples"];
 //    for (NSDictionary *d in simplesFromDictionary) {
@@ -41,7 +44,7 @@
         [imagesURLsArray addObject:picture];
         
     }
-    clothing.imagesURLs = imagesURLsArray;
+    clothing.images = imagesURLsArray;
     return clothing;
 }
 

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPPopoverController.h"
+#import "FiltersViewController.h"
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, FiltersMenuDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSNumber *maxItems;
 @property (strong, nonatomic) NSNumber *pageNumber;

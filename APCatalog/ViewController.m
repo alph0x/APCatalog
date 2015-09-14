@@ -18,10 +18,14 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
 
 @interface ViewController () {
     NSDictionary *responseJSON;
+    NSMutableArray *cachedData;
     NSArray *results;
     DFCache *cache;
     NSMutableArray *parsedResults;
-    
+    FPPopoverController *filtersPopover;
+    FiltersViewController *filtersMenu;
+    UIView *shadowView;
+    BOOL isUpdating;
     
 }
 
@@ -36,7 +40,6 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
     _pageNumber = @1;
     _sortingDescription = @"popularity";
     _sortingDirection = @"asc";
-    parsedResults = [NSMutableArray new];
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     cache = [[DFCache alloc] initWithName:@"clothes"];
@@ -47,22 +50,40 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
         }
         [self.tableView reloadData];
     }else {
-        [self performConnectionWithMaxItems:_maxItems
-                                 pageNumber:_pageNumber
-                              sortingOption:_sortingDescription
-                               andDirection:_sortingDirection];
+        [self performConnection];
     }
-    
+    UIImage *filterIcon=[UIImage imageNamed:@"icon_filter_rides_light"];
+    UIBarButtonItem *filter=[[UIBarButtonItem alloc] initWithImage:filterIcon landscapeImagePhone:filterIcon style:UIBarButtonItemStylePlain target:self action:@selector(showFilterMenu)];
+    [filter setTintColor:[UIColor blackColor]];
+    self.navigationItem.leftBarButtonItem = filter;
     
 }
 
--(void)performConnectionWithMaxItems:(NSNumber *) maxItems
-                          pageNumber:(NSNumber *) pageNumber
-                       sortingOption:(NSString *) sort
-                        andDirection:(NSString *) direction {
+-(void) showFilterMenu {
+    shadowView = [[UIView alloc] initWithFrame:self.view.frame];
+    [shadowView setBackgroundColor:[UIColor darkGrayColor]];
+    [shadowView setAlpha:.4];
+    [self.view addSubview:shadowView];
+    filtersMenu = [[FiltersViewController alloc] initWithNibName:@"FiltersViewController" bundle:nil];
+    [filtersMenu setDelegate:self];
+    filtersPopover = [[FPPopoverController alloc] initWithViewController:filtersMenu];
+    filtersPopover.contentSize = CGSizeMake(226, 280);
+    filtersPopover.border = NO;
+    filtersPopover.tint = FPPopoverWhiteTint;
+    [filtersMenu solveSortDescriptionWithDescription:self.sortingDescription];
+    [filtersMenu solveSortOrderWithOrder:self.sortingDirection];
+    [filtersPopover presentPopoverFromView:self.navigationItem.titleView];
+    
+}
+
+-(void)performConnection {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please wait" message:@"Downloading the catalog information, this may take few minutes..." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
     [alertView show];
-    NSString *desiredURLString = [NSString stringWithFormat:@"%@?maxItems=%@&page=%@&sort=%@&dir=%@", BaseURLString, maxItems, pageNumber, sort, direction];
+    int page = [_pageNumber integerValue];
+    if (isUpdating) {
+        page++;
+    }
+    NSString *desiredURLString = [NSString stringWithFormat:@"%@?maxItems=%@&page=%i&sort=%@&dir=%@", BaseURLString, _maxItems, page, _sortingDescription, _sortingDirection];
     NSURL *url = [NSURL URLWithString:desiredURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -73,7 +94,24 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
         
         responseJSON = responseObject;
         results = [[responseJSON objectForKey:@"metadata"] objectForKey:@"results"];
-        [cache storeObject:results forKey:@"results"];
+        if (!isUpdating) {
+            if (parsedResults) {
+                parsedResults = nil;
+            }
+            parsedResults = [NSMutableArray new];
+            cachedData = [NSMutableArray new];
+            [cache removeObjectForKey:@"results"];
+            [cachedData addObjectsFromArray:results];
+        }else {
+            if (results.count > 0) {
+                [cachedData addObjectsFromArray:results];
+            }
+            isUpdating = NO;
+            _pageNumber = [NSNumber numberWithInt:page];
+        }
+        
+        [cache storeObject:cachedData forKey:@"results"];
+        
         for (NSDictionary *d in results) {
             [parsedResults addObject:[clothingData clothingFromDictionary:d]];
         }
@@ -96,6 +134,29 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
     
 }
 
+#pragma mark FILTERS DELEGATE METHODS
+
+-(void)filtersMenuWillDisappear {
+    if (shadowView) {
+        [shadowView removeFromSuperview];
+    }
+}
+
+- (void) applyFilters {
+    [self performConnection];
+    [filtersPopover dismissPopoverAnimated:YES];
+}
+
+-(void)sortDescriptionSelected {
+    self.sortingDescription = filtersMenu.sortDescription;
+    [self applyFilters];
+}
+
+-(void)sortOrderSelected {
+    self.sortingDirection = filtersMenu.sortOrder;
+    [self applyFilters];
+}
+
 #pragma mark TABLE DELEGATE METHODS
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -103,12 +164,58 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
     clothingCell.cloth = [parsedResults objectAtIndex:indexPath.row];
     clothingCell.brand.text = clothingCell.cloth.brand;
     clothingCell.model.text = clothingCell.cloth.name;
-    [clothingCell.mainImageView setImage:[clothingCell.cloth.imagesURLs objectAtIndex:0]];
-    [clothingCell.thumbnailsImages enumerateObjectsUsingBlock:^(UIImageView *thumbnail, NSUInteger idx, BOOL *stop) {
-        [thumbnail setImage:[clothingCell.cloth.imagesURLs objectAtIndex:idx]];
-    }];
+    int idx = 0;
+    int limit = clothingCell.cloth.images.count-1;
+    if (idx <= limit) {
+        if ([clothingCell.cloth.images objectAtIndex:idx]) {
+            [clothingCell.thumbnail1 setImage:[clothingCell.cloth.images objectAtIndex:idx]];
+        }
+    }
+    idx++;
+    if (idx <= limit) {
+        if ([clothingCell.cloth.images objectAtIndex:idx]) {
+            [clothingCell.thumbnail2 setImage:[clothingCell.cloth.images objectAtIndex:idx]];
+        }
+    }
+    idx++;
+    if (idx <= limit) {
+        if ([clothingCell.cloth.images objectAtIndex:idx]) {
+            [clothingCell.thumbnail3 setImage:[clothingCell.cloth.images objectAtIndex:idx]];
+        }
+    }
+    idx++;
+    if (idx <= limit) {
+        if ([clothingCell.cloth.images objectAtIndex:idx]) {
+            [clothingCell.thumbnail4 setImage:[clothingCell.cloth.images objectAtIndex:idx]];
+        }
+    }
+    idx++;
+    if (idx <= limit) {
+        if ([clothingCell.cloth.images objectAtIndex:idx]) {
+            [clothingCell.thumbnail5 setImage:[clothingCell.cloth.images objectAtIndex:idx]];
+        }
+    }
+    idx++;
+    if (idx <= limit) {
+        if ([clothingCell.cloth.images objectAtIndex:idx]) {
+            [clothingCell.thumbnail6 setImage:[clothingCell.cloth.images objectAtIndex:idx]];
+        }
+    }
+    
+
     clothingCell.price.text = [NSString stringWithFormat:@"RM %@", clothingCell.cloth.price];
     return clothingCell;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSInteger currentOffset = scrollView.contentOffset.y;
+    NSInteger maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+    if (maximumOffset - currentOffset <= -40 && currentOffset>0) {
+        if (parsedResults.count > 0) {
+            isUpdating = YES;
+            [self performConnection];
+        }
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

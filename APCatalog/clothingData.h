@@ -18,7 +18,7 @@
 @property (assign, nonatomic) NSNumber *price;
 @property (strong, nonatomic) NSArray  *simples; //simplesObject Array.
 @property (strong, nonatomic) NSString *identifier;
-@property (strong, nonatomic) NSArray  *imagesURLs;
+@property (strong, nonatomic) NSArray  *images;
 
 +(clothingData *) clothingFromDictionary:(NSDictionary *) dictionary;
 
