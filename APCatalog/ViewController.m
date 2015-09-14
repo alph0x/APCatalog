@@ -45,6 +45,7 @@ static NSString * const BaseURLString = @"https://www.zalora.com.my/mobile-api/w
     cache = [[DFCache alloc] initWithName:@"clothes"];
     results = [cache cachedObjectForKey:@"results"];
     if (results) {
+        parsedResults = [NSMutableArray new];
         for (NSDictionary *d in results) {
             [parsedResults addObject:[clothingData clothingFromDictionary:d]];
         }
